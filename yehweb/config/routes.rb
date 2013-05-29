@@ -1,4 +1,10 @@
 Yehweb::Application.routes.draw do
+  get "siah/home"
+
+  get "siah/help"
+
+  get "siah/about"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

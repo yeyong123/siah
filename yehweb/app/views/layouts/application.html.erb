@@ -1,14 +1,29 @@
+#encoding:utf-8
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Yehweb</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <title>siah | <%= yield(:title) %></title>
+  <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+  <header class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <%= link_to "siah", '#', id:"logo" %>
+        <nav>
+        <ul class="nav pull-right">
+          <li><%= link_to "主页", '#' %></li>
+          <li><%= link_to "帮助", '#' %></li>
+          <li><%= link_to "注册", '#' %></li>
+        </ul>
+        </nav>
+      </div>
+      </header>
+      <div class="container">
+        <%= yield %>
+      </div>
 
 </body>
 </html>
