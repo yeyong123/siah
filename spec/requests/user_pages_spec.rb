@@ -36,6 +36,12 @@ describe "UserPages" do
 				fill_in "密码", 			with: 123456
 				fill_in "重复密码", 	with: 123456
 			end
+			
+			describe "after saving the user" do
+				before { click_button submit }
+				let(:user) { User.find_by_email('user@example.com')}
+				it { should have_link("退出")}
+			end
 
 			it "should create a user" do
 				expect { click_button submit }.to change(User, :count).by(1)
