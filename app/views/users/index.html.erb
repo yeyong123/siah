@@ -1,0 +1,16 @@
+#encoding:utf-8
+<% provide(:title, "用户") %>
+<h1>用户</h1>
+<%= will_paginate %>
+<ul class="users">
+	<% @users.each do |user| %>
+		<li>
+		<%= gravatar_for user, size: 52 %>
+		<%= link_to user.name, user %>
+		<% if current_user.admin? && !current_user?(user) %>
+			| <%= link_to "删除", user, method: :delete,  confirm: "你确定删除？" %>
+		<% end %>
+		</li>
+	<% end %>
+</ul>
+<%= will_paginate %>
