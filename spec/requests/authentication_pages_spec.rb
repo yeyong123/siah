@@ -43,7 +43,21 @@ describe "AuthenticationPages" do
 	describe "authorizetion" do
 		describe "for non-signed-in users" do
 			let(:user) { FactoryGirl.create(:user) }
-			
+		
+			#限制访问微博的资源	
+			describe "in the Microposts controller" do
+				
+				describe "submiting to the create action" do
+				#	before { post micropost_path }
+				#	specify { response.should redirect_to(signin_path)}
+				end
+				
+				describe "submiting to the destroy action" do
+					before { delete micropost_path(FactoryGirl.create(:micropost))}
+					specify { response.should redirect_to(signin_path)}
+				end
+			end
+
 			describe "when attempting to visit a protected page" do
 				before do
 					visit edit_user_path(user)

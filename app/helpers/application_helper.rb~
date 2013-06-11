@@ -1,0 +1,34 @@
+module ApplicationHelper
+    def ch_time(from_time)  
+    time = time_ago_in_words(from_time,include_seconds = true)  
+      
+    time = time.sub(/about /,"")  
+    time = time.sub(/over /,"")   
+    if time.to_i == 0  
+    case time.to_s  
+    when 'half a minute'   then '半分钟前'  
+    when 'less than a minute' then '不到1分钟前'  
+    when 'less than 5 seconds'   then '5秒前'  
+    when 'less than 10 seconds' then '10秒前'  
+    when 'less than 20 seconds' then '20秒前'  
+    end  
+    else  
+    mun = time.to_i   
+    case time[-3,3]  
+    when 'nds'   then mun.to_s+'秒前'  
+    when 'ute'   then mun.to_s+'分前'  
+    when 'tes' then mun.to_s+'分钟前'  
+    when 'urs','our' then mun.to_s+'小时前'  
+    when 'day','ays' then mun.to_s+'天前'  
+    when 'nth','ths' then mun.to_s+'个月前'  
+    when 'ear','ars' then mun.to_s+'年前'  
+    end  
+    end   
+    end  
+
+	def timeago(time, options = {})
+    options[:class]
+    options[:class] = options[:class].blank? ? "timeago" : [options[:class],"timeago"].join(" ")
+    content_tag(:abbr, "", options.merge(:title => time.iso8601)) if time
+  end
+end

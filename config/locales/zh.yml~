@@ -12,6 +12,4 @@ time:
       time: "%H:%M"
       short: "%b%d日 %H:%M"
       long: "%Y年%b%d日 %H:%M"
-      hour: "小时"
-      about: "大约"
-      ago: "前"
+
