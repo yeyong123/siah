@@ -13,7 +13,7 @@ pid "#{Rails.root}/tmp/pids/unicorn.pid"
 stderr_path "#{Rails.root}/log/unicorn.log"
 stdout_path "#{Rails.root}/log/unicorn.log"
 listen 5000, :tcp_nopush => false
-listen "#{Rails.root}/tmp/unicorn.siah.sock", :backlog => 64
+listen "/tmp/unicorn.siah.sock", :backlog => 64
 worker_processes 6
 timeout 120
 if GC.respond_to?(:copy_on_write_friendly=)
